@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00:00 Watches Store - متجر الساعات</title>
+    <meta name="description" content="متجر 00:00 للساعات الفاخرة - رولكس، تيسوت، كاسيو بأفضل الأسعار">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            border: 2px solid #1a1a1a;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        [dir="ltr"] .lang-toggle {
+            left: auto;
+            right: 20px;
+        }
+
+        .lang-toggle:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #ccc;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-brand {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .current-price {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #2ecc71;
+        }
+
+        .old-price-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+            color: #999;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            font-size: 1.3em;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .contact-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20ba5a;
+            transform: scale(1.05);
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+
+        .instagram-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(188, 24, 136, 0.4);
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 0.95em;
+            }
+
+            .lang-toggle {
+                top: 10px;
+                left: 10px;
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+
+            [dir="ltr"] .lang-toggle {
+                left: auto;
+                right: 10px;
+            }
+
+            .product-image {
+                height: 240px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 15px;
+            }
+
+            .products-grid {
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="lang-toggle" onclick="toggleLanguage()">
+        <span class="lang-text">English</span>
+    </button>
+
+    <header>
+        <div class="container">
+            <h1>00:00</h1>
+            <p class="subtitle" data-ar="متجر الساعات الفاخرة" data-en="Luxury Watches Store">متجر الساعات الفاخرة</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <footer>
+        <p data-ar="© 2024 متجر 00:00 للساعات - جميع الحقوق محفوظة" data-en="© 2024 00:00 Watches Store - All Rights Reserved">© 2024 متجر 00:00 للساعات - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        const products = [
+            { brand: 'Rolex ', brandAr: ' Rolex ', price: 449, oldPrice: 600 },
+            { brand: 'Rolex ', brandAr: ' Rolex ', price: 280, oldPrice: 450 },
+            { brand: 'Rolex ', brandAr: ' Rolex ', price: 300, oldPrice: 470 },
+            { brand: 'Rolex ', brandAr: ' Rolex ', price: 490, oldPrice: 620 },
+            { brand: 'Rolex ', brandAr: ' Rolex ', price: 400, oldPrice: 580 },
+            { brand: 'Tissot', brandAr: ' Tissot ', price: 380, oldPrice: 450 },
+            { brand: 'Tissot', brandAr: ' Tissot ', price: 560, oldPrice: 700 },
+            { brand: 'Tissot', brandAr: ' Tissot ', price: 500, oldPrice: 640 },
+            { brand: 'Casio', brandAr: 'Casio', price: 230, oldPrice: 300 },
+            { brand: 'Casio', brandAr: 'Casio', price: 340, oldPrice: 490 }
+        ];
+
+        let currentLang = 'ar';
+
+        const translations = {
+            ar: {
+                insteadOf: 'بدلاً من',
+                whatsapp: 'WHATSAPP',
+                instagram: 'INSTAGRAM',
+                egp: 'جنيه'
+            },
+            en: {
+                insteadOf: 'Instead of',
+                whatsapp: 'WhatsApp ',
+                instagram: 'Instagram ',
+                egp: 'EGP'
+            }
+        };
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const t = translations[currentLang];
+            
+            grid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-image">⌚</div>
+                    <div class="product-info">
+                        <h3 class="product-brand">${currentLang === 'ar' ? product.brandAr : product.brand}</h3>
+                        <div class="price-container">
+                            <span class="current-price">${product.price} ${t.egp}</span>
+                            <div class="old-price-wrapper">
+                                <span>${t.insteadOf}</span>
+                                <span class="old-price">${product.oldPrice} ${t.egp}</span>
+                            </div>
+                        </div>
+                        <div class="buttons-container">
+                            <a href="https://wa.me/201103693893?text=${encodeURIComponent('مرحباً، أود الاستفسار عن ' + (currentLang === 'ar' ? product.brandAr : product.brand))}" 
+                               class="contact-btn whatsapp-btn" target="_blank">
+                                ${t.whatsapp}
+                            </a>
+                            <a href="https://www.instagram.com/watches_store_0000?igsh=NGl0dmpiNWltMG9m" 
+                               class="contact-btn instagram-btn" target="_blank">
+                                ${t.instagram}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const langBtn = document.querySelector('.lang-text');
+            
+            if (currentLang === 'ar') {
+                currentLang = 'en';
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                langBtn.textContent = 'العربية';
+            } else {
+                currentLang = 'ar';
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                langBtn.textContent = 'English';
+            }
+
+            document.querySelectorAll('[data-ar]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + currentLang);
+            });
+
+            renderProducts();
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
